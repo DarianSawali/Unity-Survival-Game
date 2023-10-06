@@ -15,7 +15,7 @@ public class SwordAttack : MonoBehaviour
 
     Vector2 rightAttackOffset;
 
-    
+    public float damage = 1;
 
     private void Start()
     {
@@ -63,7 +63,12 @@ public class SwordAttack : MonoBehaviour
     {
         if(other.tag == "Enemy")
         {
+            Enemy enemy = other.GetComponent<Enemy>();
 
+            if(enemy != null)
+            {
+                enemy.Health -= damage;
+            }
         }
     }
 
