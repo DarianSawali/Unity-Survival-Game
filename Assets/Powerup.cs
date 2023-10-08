@@ -5,14 +5,20 @@ using UnityEngine;
 public class Powerup : MonoBehaviour
 {
     public PoweupEffect powerupEffect;
-    private void onTriggerEnter2D(Collider2D collision)
+    private void OnTriggerEnter2D(Collider2D other)
     {
         //check here for player
 
-        if(collision.gameObject.CompareTag("Player")) {
+        if(other.tag == "Player"){
+            Player player = other.GetComponent<Player>();
+            powerupEffect.Apply(other.gameObject);
             Destroy(gameObject);
-            powerupEffect.Apply(collision.gameObject);
         }
+
+        // if(collision.gameObject.CompareTag("Player")) {
+        //     Destroy(gameObject);
+        //     powerupEffect.Apply(collision.gameObject);
+        // }
         else {
             
         }
