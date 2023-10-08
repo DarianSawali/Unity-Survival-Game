@@ -89,4 +89,14 @@ public class Health : MonoBehaviour
             //dead
         }
     }
+
+    public void reduceHealth()
+    {
+        health--;
+    }
+
+    public void addHealth()
+    {
+        health++;
+    }
 }

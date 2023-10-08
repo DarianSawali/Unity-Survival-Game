@@ -6,7 +6,17 @@ public class Powerup : MonoBehaviour
 {
     public PoweupEffect powerupEffect;
     public GameObject player;
+    public Health healthBar;
 
+    private void Start()
+    {
+        //Health health = GetComponent<Health>();
+    }
+
+    public void Apply(GameObject player)
+    {
+        //health.health--;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -14,9 +24,10 @@ public class Powerup : MonoBehaviour
 
         if(other.tag == "Player"){
             PlayerMovement player = GetComponent<PlayerMovement>();
+            Health health = GetComponent<Health>();
             print("hit");
-            //powerupEffect.Apply(other.gameObject);
-            //Destroy(gameObject);
+            healthBar.addHealth();
+            Destroy(gameObject);
         }
 
         //if(collision.gameObject.CompareTag("Player")) {
