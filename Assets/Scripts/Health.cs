@@ -10,11 +10,12 @@ public class Health : MonoBehaviour
     public GameObject Heart4;
     public GameObject Heart5;
 
-    int health = 5;
+    public int health;
+    public int maxHealth = 5;
     // Start is called before the first frame update
     void Start()
     {
-        
+        int health = maxHealth;
     }
 
     // Update is called once per frame
@@ -77,6 +78,15 @@ public class Health : MonoBehaviour
                 Heart5.gameObject.SetActive(true);
                 break;
             }
+        }
+    }
+
+    void TakeDamage(int amount)
+    {
+        health -= amount;
+
+        if(health <= 0) {
+            //dead
         }
     }
 }
