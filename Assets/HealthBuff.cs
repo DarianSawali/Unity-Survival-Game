@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Powerups/HealthBuff")]
-public class HealthBuff : PowerupEffect
+[CreateAssetMenu(menuName = "PoweupEffect/HealthBuff")]
+public class HealthBuff : PoweupEffect
 {
     public float amount;
     public override void Apply(GameObject target)
     {
-        target.GetComponent<HealthBuff>().health.value += amount;
+        target.GetComponent<Health>().health.value += amount;
     }
 }

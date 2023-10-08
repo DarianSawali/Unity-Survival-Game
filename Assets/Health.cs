@@ -5,19 +5,19 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
     public int maxHealth = 3;
-    public int currentHealth;
+    public int health = 5;
     
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxHealth;
+        health = maxHealth;
     }
 
     void TakeDamage(int amount)
     {
-        currentHealth -= amount;
+        health -= amount;
 
-        if(currentHealth <= 0) {
+        if(health <= 0) {
             //dead
         }
     }
