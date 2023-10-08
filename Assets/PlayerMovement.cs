@@ -20,6 +20,7 @@ public class PlayerMovement : MonoBehaviour
     public SwordAttack swordAttack;
 
 
+
     // Start is called before the first frame update
     void Start()
     {
@@ -116,9 +117,25 @@ public class PlayerMovement : MonoBehaviour
         //swordAttack.Attack();
     }
 
+
+
     void unlockMovement()
     {
         swordAttack.StopAttack();
         canMove = true;
     }
-}
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if(other.tag == "HealthUp")
+        {
+            print("HEALTH");
+            Powerup healthUp = GetComponent<Powerup>();
+            Destroy(healthUp);
+        }
+    }
+
+
+
+
+    }
