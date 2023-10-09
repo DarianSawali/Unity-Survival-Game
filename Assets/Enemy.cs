@@ -17,6 +17,7 @@ public class Enemy : MonoBehaviour
     [SerializeField] private float damageTimer = 0;
     private float damageDelay = 1f;
 
+
     public float Health
     {
         set
@@ -54,7 +55,8 @@ public class Enemy : MonoBehaviour
     { 
         // Check if the collider that has collided with the enemy is the player 
         if (collision.collider.tag == "Player") 
-        { 
+        {
+            PlayerMovement me = GetComponent<PlayerMovement>();
             // Check if the player is currently able to take damage (i.e. the damage timer is less than or equal to zero) 
             // if (damageTimer <= 0) 
             // { 
@@ -64,9 +66,18 @@ public class Enemy : MonoBehaviour
  
             //     // Reset the damage timer 
             //     damageTimer = damageDelay; 
-                print("attacked");
+            print("attacked");
             // } 
         } 
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.tag == "Player")
+        {
+            print("ouch");
+            speed = 0;
+        }
     }
 
     public void Defeated()

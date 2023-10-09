@@ -14,6 +14,7 @@ public class PlayerMovement : MonoBehaviour
 
     Animator animator;
     SpriteRenderer spriterenderer;
+    public Enemy enemy;
 
     bool canMove = true;
 
@@ -133,19 +134,20 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-    // private void OnCollisionEnter2D(Collision2D other) {
-    //     Enemy enemy = other.gameObject.GetComponent<Enemy>();
+
+    // private void oncollisionenter2d(collision2d other) {
+    //     enemy enemy = other.gameobject.getcomponent<enemy>();
     //     if(enemy != null) {
     //         print("attacked");
     //     }
-    //     if(other.gameObject.tag == "Enemy")
+    //     if(other.gameobject.tag == "enemy")
     //     {
-    //         // Health health = GetComponent<Health>();
+    //         // health health = getcomponent<health>();
     //         print("attacked");
-    //         // healthBar.reduceHealth();
+    //         // healthbar.reducehealth();
     //     }
     //     else {
-    //         Enemy enemy = other.gameObject.GetComponent<Enemy>();
+    //         enemy enemy = other.gameobject.getcomponent<enemy>();
     //         if(enemy != null) {
     //             print("attacked");
     //         }
