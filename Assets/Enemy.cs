@@ -14,9 +14,6 @@ public class Enemy : MonoBehaviour
     public float health = 3;
 
     [SerializeField] private float attackDamage = 1f;
-    [SerializeField] private float damageTimer = 0;
-    private float damageDelay = 1f;
-
 
     public float Health
     {

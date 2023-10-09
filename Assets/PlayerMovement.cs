@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     SpriteRenderer spriterenderer;
     public Enemy enemy;
-    private float damageDelay = 1f;
+    private float damageDelay = 10f;
 
     public Health healthBar;
 
@@ -24,7 +24,10 @@ public class PlayerMovement : MonoBehaviour
     public SwordAttack swordAttack;
 
     [SerializeField] private float attackDamage = 1f;
-    [SerializeField] private float damageTimer = 0;
+    [SerializeField] private float damageTimer;
+
+    private bool readyAttack = false;
+    
 
     // Start is called before the first frame update
     void Start()
@@ -32,10 +35,7 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriterenderer = GetComponent<SpriteRenderer>();
-        if(damageTimer != 0)
-        {
-            damageTimer -= 0.2f;
-        }
+        damageTimer = damageDelay;
     }
 
     private void FixedUpdate()
@@ -145,40 +145,42 @@ public class PlayerMovement : MonoBehaviour
             Powerup healthUp = GetComponent<Powerup>();
             Destroy(healthUp);
         }
-        //if (damageTimer <= 0)
-        //{
-            if (other.tag == "Enemy")
-            {
-                print("sakit");
-                enemy.speed = 0;
-                Health hp = GetComponent<Health>();
+
+        if (other.tag == "Enemy")
+        {
+            print("sakit");
+            enemy.speed = 0;
+            Health hp = GetComponent<Health>();
+            if (readyAttack = true){
+                print("ready");
                 healthBar.reduceHealth();
                 damageTimer = damageDelay;
-                
+                readyAttack = false;
             }
-        //}
-        
+        }
+
+        // if (damageTimer <= 0)
+        // {
+        //     if (other.tag == "Enemy")
+        //     {
+        //         print("sakit");
+        //         enemy.speed = 0;
+        //         Health hp = GetComponent<Health>();
+        //         healthBar.reduceHealth();
+        //         damageTimer = damageDelay;
+                
+        //     }
+        // }
     }
 
-
-    // private void oncollisionenter2d(collision2d other) {
-    //     enemy enemy = other.gameobject.getcomponent<enemy>();
-    //     if(enemy != null) {
-    //         print("attacked");
-    //     }
-    //     if(other.gameobject.tag == "enemy")
-    //     {
-    //         // health health = getcomponent<health>();
-    //         print("attacked");
-    //         // healthbar.reducehealth();
-    //     }
-    //     else {
-    //         enemy enemy = other.gameobject.getcomponent<enemy>();
-    //         if(enemy != null) {
-    //             print("attacked");
-    //         }
-    //     }
-    // }
+    private void update() {
+        if (damageTimer > 0){
+            damageTimer =- 1f;
+        }
+        else if (damageTimer <= 0){
+            readyAttack = true;
+        }
+    }
 
 
 }
