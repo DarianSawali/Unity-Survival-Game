@@ -22,6 +22,7 @@ public class Health : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // testing, remove before final
         if(Input.GetKeyDown(KeyCode.Q))
         {
             health--;
@@ -31,6 +32,7 @@ public class Health : MonoBehaviour
             health++;
         }
 
+        // not sure if this will stay, probably will
         if(health <= 0) {
             SceneManager.LoadScene("LoseScreen");
         }
