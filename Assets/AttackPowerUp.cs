@@ -15,7 +15,7 @@ public class AttackPowerUp : MonoBehaviour
 
     public void Apply(GameObject player)
     {
-        //health.health--;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D other)
