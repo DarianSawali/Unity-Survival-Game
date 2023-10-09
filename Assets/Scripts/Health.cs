@@ -15,6 +15,7 @@ public class Health : MonoBehaviour
     public GameObject Heart3;
     public GameObject Heart4;
     public GameObject Heart5;
+    public GameObject Heart6;
 
     public int health;
     public int maxHealth = 5;
@@ -53,6 +54,7 @@ public class Health : MonoBehaviour
                 Heart3.gameObject.SetActive(false);
                 Heart4.gameObject.SetActive(false);
                 Heart5.gameObject.SetActive(false);
+                Heart6.gameObject.SetActive(false);
                 break;
             }
             case 1: {
@@ -61,6 +63,7 @@ public class Health : MonoBehaviour
                 Heart3.gameObject.SetActive(false);
                 Heart4.gameObject.SetActive(false);
                 Heart5.gameObject.SetActive(false);
+                Heart6.gameObject.SetActive(false);
                 break;
             }
             case 2: {
@@ -69,6 +72,7 @@ public class Health : MonoBehaviour
                 Heart3.gameObject.SetActive(false);
                 Heart4.gameObject.SetActive(false);
                 Heart5.gameObject.SetActive(false);
+                Heart6.gameObject.SetActive(false);
                 break;
             }
             case 3: {
@@ -77,6 +81,7 @@ public class Health : MonoBehaviour
                 Heart3.gameObject.SetActive(true);
                 Heart4.gameObject.SetActive(false);
                 Heart5.gameObject.SetActive(false);
+                Heart6.gameObject.SetActive(false);
                 break;
             }
             case 4: {
@@ -85,6 +90,7 @@ public class Health : MonoBehaviour
                 Heart3.gameObject.SetActive(true);
                 Heart4.gameObject.SetActive(true);
                 Heart5.gameObject.SetActive(false);
+                Heart6.gameObject.SetActive(false);
                 break;
             }
             case 5: {
@@ -93,6 +99,16 @@ public class Health : MonoBehaviour
                 Heart3.gameObject.SetActive(true);
                 Heart4.gameObject.SetActive(true);
                 Heart5.gameObject.SetActive(true);
+                Heart6.gameObject.SetActive(false);
+                break;
+            }
+            case 6: {
+                Heart1.gameObject.SetActive(true);
+                Heart2.gameObject.SetActive(true);
+                Heart3.gameObject.SetActive(true);
+                Heart4.gameObject.SetActive(true);
+                Heart5.gameObject.SetActive(true);
+                Heart6.gameObject.SetActive(true);
                 break;
             }
         }
@@ -114,6 +130,11 @@ public class Health : MonoBehaviour
 
     public void addHealth()
     {
-        health++;
+        if(health == maxHealth) {
+            maxHealth++;
+            health++;
+        } else {
+            health++;
+        }
     }
 }
