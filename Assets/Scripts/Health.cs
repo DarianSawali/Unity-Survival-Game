@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
@@ -29,6 +30,11 @@ public class Health : MonoBehaviour
         {
             health++;
         }
+
+        if(health <= 0) {
+            SceneManager.LoadScene("LoseScreen");
+        }
+
         switch(health) {
             case 0: {
                 Heart1.gameObject.SetActive(false);
@@ -86,7 +92,7 @@ public class Health : MonoBehaviour
         health -= amount;
 
         if(health <= 0) {
-            //dead
+            SceneManager.LoadScene("LoseScreen");
         }
     }
 
