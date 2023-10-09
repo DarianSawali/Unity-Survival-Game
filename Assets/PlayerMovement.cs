@@ -174,10 +174,11 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void update() {
-        if (damageTimer > 0){
+        if (damageTimer > 0f){
             damageTimer =- 1f;
+            print("decreasing");
         }
-        else if (damageTimer <= 0){
+        else if (damageTimer <= 0f){
             readyAttack = true;
         }
     }
