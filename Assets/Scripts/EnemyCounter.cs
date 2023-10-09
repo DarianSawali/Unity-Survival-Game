@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class EnemyCounter : MonoBehaviour
@@ -20,5 +21,9 @@ public class EnemyCounter : MonoBehaviour
         enemies = GameObject.FindGameObjectsWithTag("Enemy");
 
         enemyCountText.text = "Enemies: " + enemies.Length.ToString();
+
+        if(enemies.Length <= 0) {
+            SceneManager.LoadScene("WinScreen");
+        }
     }
 }
