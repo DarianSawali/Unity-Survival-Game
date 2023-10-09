@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     SpriteRenderer spriterenderer;
     public Enemy enemy;
-    private float damageDelay = 10f;
+    private float damageDelay = 15f;
 
     public Health healthBar;
 
