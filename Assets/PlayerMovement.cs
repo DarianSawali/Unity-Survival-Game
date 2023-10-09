@@ -15,7 +15,7 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     SpriteRenderer spriterenderer;
     public Enemy enemy;
-    private float damageDelay = 15f;
+    private float damageDelay = 3000f;
 
     public Health healthBar;
 
@@ -152,33 +152,20 @@ public class PlayerMovement : MonoBehaviour
             enemy.speed = 0;
             Health hp = GetComponent<Health>();
             if (readyAttack = true){
-                print("ready");
                 healthBar.reduceHealth();
                 damageTimer = damageDelay;
                 readyAttack = false;
             }
         }
-
-        // if (damageTimer <= 0)
-        // {
-        //     if (other.tag == "Enemy")
-        //     {
-        //         print("sakit");
-        //         enemy.speed = 0;
-        //         Health hp = GetComponent<Health>();
-        //         healthBar.reduceHealth();
-        //         damageTimer = damageDelay;
-                
-        //     }
-        // }
     }
 
-    private void update() {
+    private void Update() {
         if (damageTimer > 0f){
-            damageTimer =- 1f;
+            damageTimer--;
             print("decreasing");
         }
         else if (damageTimer <= 0f){
+            print("ready");
             readyAttack = true;
         }
     }
