@@ -14,8 +14,8 @@ public class Enemy : MonoBehaviour
 
     public Health healthBar;
     [SerializeField] private float attackDamage = 1f;
-    [SerializeField] private float attackSpeed = 1f;
-    private float canAttack;
+    [SerializeField] private float damageTimer = 0;
+    private float damageDelay = 1f;
 
     public float Health
     {
@@ -50,30 +50,24 @@ public class Enemy : MonoBehaviour
 
     }
 
-    // private void OnCollisionStay2D(Collision2D other) {
-    //     if(other.gameObject.tag == "Player") {
-    //         if (attackSpeed <= canAttack) {
-    //             PlayerMovement player = GetComponent<PlayerMovement>();
-    //             Health health = GetComponent<Health>(); //issue with which health?
-    //             print("attacked");
-    //             healthBar.reduceHealth();
-    //             canAttack = 0f;
-    //         }
-    //         else {
-    //             canAttack += Time.deltaTime;
-    //         }
-    //     }
-    //     PlayerMovement player = GetComponent<PlayerMovement>();
-    //     Health health = GetComponent<Health>(); //issue with which health?
-    //     print("attacked");
-    //     healthBar.reduceHealth();
-    //     canAttack = 0f;
-    // }
-
-    //public void TakeDamage(float damage)
-    //{
-    //   health -= damage;
-    //}
+    void OnCollisionEnter(Collision collision) 
+    { 
+        // Check if the collider that has collided with the enemy is the player 
+        if (collision.collider.tag == "Player") 
+        { 
+            // Check if the player is currently able to take damage (i.e. the damage timer is less than or equal to zero) 
+            // if (damageTimer <= 0) 
+            // { 
+            //     // Subtract the damage amount from the player's health 
+            //     PlayerHealth playerHealth = collision.collider.GetComponent<PlayerHealth>(); 
+            //     playerHealth.TakeDamage(attackDamage); 
+ 
+            //     // Reset the damage timer 
+            //     damageTimer = damageDelay; 
+                print("attacked");
+            // } 
+        } 
+    }
 
     public void Defeated()
     {
