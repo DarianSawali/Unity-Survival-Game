@@ -15,12 +15,16 @@ public class PlayerMovement : MonoBehaviour
     Animator animator;
     SpriteRenderer spriterenderer;
     public Enemy enemy;
+    private float damageDelay = 1f;
+
+    public Health healthBar;
 
     bool canMove = true;
 
     public SwordAttack swordAttack;
 
-
+    [SerializeField] private float attackDamage = 1f;
+    [SerializeField] private float damageTimer = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -28,6 +32,10 @@ public class PlayerMovement : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
         spriterenderer = GetComponent<SpriteRenderer>();
+        if(damageTimer != 0)
+        {
+            damageTimer -= 0.2f;
+        }
     }
 
     private void FixedUpdate()
@@ -98,6 +106,11 @@ public class PlayerMovement : MonoBehaviour
         
     }
 
+    public void Death()
+    {
+        animator.SetTrigger("Death");
+    }
+
     public void SwingAttack()
     {
         lockMovement();
@@ -132,6 +145,19 @@ public class PlayerMovement : MonoBehaviour
             Powerup healthUp = GetComponent<Powerup>();
             Destroy(healthUp);
         }
+        //if (damageTimer <= 0)
+        //{
+            if (other.tag == "Enemy")
+            {
+                print("sakit");
+                enemy.speed = 0;
+                Health hp = GetComponent<Health>();
+                healthBar.reduceHealth();
+                damageTimer = damageDelay;
+                
+            }
+        //}
+        
     }
 
 

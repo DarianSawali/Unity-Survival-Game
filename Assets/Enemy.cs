@@ -7,12 +7,12 @@ public class Enemy : MonoBehaviour
     Animator animator;
     public GameObject player;
     SpriteRenderer spriterenderer;
+    public Health healthBar;
 
     public float speed;
     private float distance;
     public float health = 3;
 
-    public Health healthBar;
     [SerializeField] private float attackDamage = 1f;
     [SerializeField] private float damageTimer = 0;
     private float damageDelay = 1f;
@@ -75,8 +75,9 @@ public class Enemy : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            print("ouch");
-            speed = 0;
+            //print("ouch");
+            //speed = 0;
+            //healthBar.reduceHealth();
         }
     }
 

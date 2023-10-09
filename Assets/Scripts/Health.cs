@@ -5,6 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class Health : MonoBehaviour
 {
+    Animator animator;
+    public GameObject Player;
+
+    PlayerMovement player;
+
     public GameObject Heart1;
     public GameObject Heart2;
     public GameObject Heart3;
@@ -17,6 +22,8 @@ public class Health : MonoBehaviour
     void Start()
     {
         int health = maxHealth;
+        Animator animator = GetComponent<Animator>();
+        //animator.SetBool("isAlive", true);
     }
 
     // Update is called once per frame
@@ -32,7 +39,9 @@ public class Health : MonoBehaviour
         }
 
         if(health <= 0) {
+            print("Dead");
             SceneManager.LoadScene("LoseScreen");
+            //player.Death();
         }
 
         switch(health) {
