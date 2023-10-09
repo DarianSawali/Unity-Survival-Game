@@ -48,23 +48,27 @@ public class Enemy : MonoBehaviour
 
         transform.position = Vector2.MoveTowards(this.transform.position, player.transform.position, speed * Time.deltaTime);
 
-    
     }
 
-    private void OnCollisionStay2D(Collision2D other) {
-        if(other.gameObject.tag == "Player") {
-            if (attackSpeed <= canAttack) {
-                PlayerMovement player = GetComponent<PlayerMovement>();
-                Health health = GetComponent<Health>(); //issue with which health?
-                print("attacked");
-                healthBar.reduceHealth();
-                canAttack = 0f;
-            }
-            else {
-                canAttack += Time.deltaTime;
-            }
-        }
-    }
+    // private void OnCollisionStay2D(Collision2D other) {
+    //     if(other.gameObject.tag == "Player") {
+    //         if (attackSpeed <= canAttack) {
+    //             PlayerMovement player = GetComponent<PlayerMovement>();
+    //             Health health = GetComponent<Health>(); //issue with which health?
+    //             print("attacked");
+    //             healthBar.reduceHealth();
+    //             canAttack = 0f;
+    //         }
+    //         else {
+    //             canAttack += Time.deltaTime;
+    //         }
+    //     }
+    //     PlayerMovement player = GetComponent<PlayerMovement>();
+    //     Health health = GetComponent<Health>(); //issue with which health?
+    //     print("attacked");
+    //     healthBar.reduceHealth();
+    //     canAttack = 0f;
+    // }
 
     //public void TakeDamage(float damage)
     //{

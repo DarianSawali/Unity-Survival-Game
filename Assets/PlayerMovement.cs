@@ -117,8 +117,6 @@ public class PlayerMovement : MonoBehaviour
         //swordAttack.Attack();
     }
 
-
-
     void unlockMovement()
     {
         swordAttack.StopAttack();
@@ -135,7 +133,14 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
-
-
-
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.tag == "Enemy")
+        {
+            // Health health = GetComponent<Health>();
+            print("attacked");
+            // healthBar.reduceHealth();
+        }
     }
+
+
+}
