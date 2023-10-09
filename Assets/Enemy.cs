@@ -51,36 +51,6 @@ public class Enemy : MonoBehaviour
 
     }
 
-    void OnCollisionEnter(Collision collision) 
-    { 
-        // Check if the collider that has collided with the enemy is the player 
-        if (collision.collider.tag == "Player") 
-        {
-            PlayerMovement me = GetComponent<PlayerMovement>();
-            // Check if the player is currently able to take damage (i.e. the damage timer is less than or equal to zero) 
-            // if (damageTimer <= 0) 
-            // { 
-            //     // Subtract the damage amount from the player's health 
-            //     PlayerHealth playerHealth = collision.collider.GetComponent<PlayerHealth>(); 
-            //     playerHealth.TakeDamage(attackDamage); 
- 
-            //     // Reset the damage timer 
-            //     damageTimer = damageDelay; 
-            print("attacked");
-            // } 
-        } 
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.tag == "Player")
-        {
-            //print("ouch");
-            //speed = 0;
-            //healthBar.reduceHealth();
-        }
-    }
-
     public void Defeated()
     {
         animator.SetTrigger("Defeated");
