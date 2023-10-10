@@ -71,13 +71,6 @@ public class SwordAttack : MonoBehaviour
                 enemy.Hit();
             }
         }
-
-        if(other.tag == "BreakableObject") {
-            BreakableBoulder boulder = other.GetComponent<BreakableBoulder>();
-            if(boulder != null) {
-                boulder.destroy();
-            }
-        }
     }
 
     public void addDamage(int amount) {
